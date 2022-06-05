@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太阳系</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: content-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        /* 背景盒子 */
+        .bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* 背景盒子图片需比盒子大，不然旋转时会露出白边 */
+        .bg img {
+            position: absolute;
+            top: -400px;
+            left: -200px;
+            width: 1900px;
+            height: 1900px;
+            animation: scroll4 200s infinite linear;
+
+        }
+
+        .galact {
+            position: relative;
+            left: 400px;
+            width: 700px;
+            height: 700px;
+            transform-style: preserve-3d;
+
+        }
+
+        /* 轨道 */
+        ul.rail {
+            position: relative;
+            width: 700px;
+            height: 700px;
+            margin: 0 auto;
+            transition: all 2s;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .rail li {
+            color: aliceblue;
+            position: absolute;
+            border-radius: 50%;
+            list-style: none;
+            transform-style: preserve-3d;
+            border: 2px solid white;
+        }
+
+        .rail li:first-child {
+            width: 700px;
+            height: 700px;
+            animation: scroll 15s infinite linear;
+
+        }
+
+        .rail li:nth-child(2) {
+            left: 50px;
+            top: 50px;
+            width: 600px;
+            height: 600px;
+            animation: scroll 12s infinite linear;
+        }
+
+        .rail li:nth-child(3) {
+            top: 100px;
+            left: 100px;
+            width: 500px;
+            height: 500px;
+            animation: scroll 10s infinite linear;
+        }
+
+        .rail li:nth-child(4) {
+            top: 150px;
+            left: 150px;
+            width: 400px;
+            height: 400px;
+            animation: scroll 8s infinite linear;
+        }
+
+        .rail li:nth-child(5) {
+            top: 200px;
+            left: 200px;
+            width: 300px;
+            height: 300px;
+            animation: scroll 5s infinite linear;
+        }
+
+        /* 公转 */
+        @keyframes scroll {
+            from {
+                transform: rotateX(70deg) rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateX(70deg) rotateZ(360deg);
+            }
+        }
+
+        /* 自转 */
+        @keyframes scroll2 {
+            from {
+                transform: rotateZ(0deg);
+            }
+
+            to {
+                transform: rotateZ(360deg);
+            }
+        }
+
+        /* 小轨道转圈 */
+        @keyframes scroll3 {
+            to {
+                transform: rotateX(360deg);
+            }
+        }
+
+        /* 大背景转圈 */
+        @keyframes scroll4 {
+            to {
+                transform: rotateZ(360deg);
+
+            }
+        }
+
+        /* 太阳 */
+        .sun {
+            top: 250px;
+            left: 250px;
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: url(images/sun1.jpg) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        /* 星球 */
+        div[class^=box] {
+            border-radius: 50%;
+            position: absolute;
+            transform-style: preserve-3d;
+            animation: scroll2 5s infinite linear;
+
+        }
+
+        ul li .box1 {
+            top: 70px;
+            left: 60px;
+            width: 80px;
+            height: 80px;
+            background-color: pink;
+            transform-style: preserve-3d;
+            background: url(images/ball.jpg) no-repeat;
+            background-size: 100% 100%;
+            transform: rotateX(0deg) rotateZ(0deg) rotateY(0deg);
+
+        }
+
+        /* 小轨道 */
+        ul li div[class^='rail'] {
+            position: absolute;
+            border-radius: 50%;
+            outline-offset: -3px;
+            border: 1px solid #fff;
+            /* transform: rotateX(50deg); */
+        }
+
+        /* 星球1和轨道 */
+        .rail1 {
+            top: 65px;
+            left: 60px;
+            width: 80px;
+            height: 80px;
+            animation: scroll3 7s infinite linear;
+            height: 90px;
+            outline: 5px rgba(200, 138, 138, 0.7) solid;
+            /* transform-style: preserve-3d; */
+        }
+
+        /* 星球2和轨道 */
+
+        .box2 {
+            top: 200px;
+            left: -10px;
+            height: 50px;
+            width: 50px;
+            background-color: aqua;
+            background: url(images/ball2.jpg) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .rail2 {
+            top: 195px;
+            left: -15px;
+            height: 60px;
+            width: 60px;
+            animation: scroll3 5s infinite linear;
+            outline: 5px rgba(119, 115, 222, 0.75) solid;
+
+        }
+
+        /* 星球3和轨道 */
+
+        .box3 {
+            top: 70px;
+            right: 10px;
+            width: 70px;
+            height: 70px;
+            background-color: gold;
+            background: url(images/ball3.jpg) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .rail3 {
+            top: 65px;
+            right: 5px;
+            width: 80px;
+            height: 80px;
+            animation: scroll3 8s infinite linear;
+            outline: 5px rgba(134, 126, 126, 0.75) solid;
+        }
+
+        /* 星球4和轨道 */
+
+        .box4 {
+            top: 170px;
+            right: -30px;
+            width: 70px;
+            height: 70px;
+            background-color: blue;
+            background: url(images/ball4.jpg) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .rail4 {
+            top: 165px;
+            right: -35px;
+            width: 80px;
+            height: 80px;
+            animation: scroll3 6s infinite linear;
+            outline: 5px rgba(56, 102, 218, 0.6) solid;
+
+        }
+
+        /* 星球5和轨道 */
+
+        .box5 {
+            top: 170px;
+            left: -30px;
+            width: 70px;
+            height: 70px;
+            background-color: rgb(213, 220, 175);
+            background: url(images/ball5.jpg) no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .rail5 {
+            top: 165px;
+            left: -35px;
+            width: 80px;
+            height: 80px;
+            animation: scroll3 7s infinite linear;
+            outline: 5px rgba(225, 189, 79, 0.6) solid;
+        }
+
+        /* 诗句 */
+        .font {
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            color: #fff;
+            writing-mode: vertical-rl;
+            font: 400 25px/3 '楷体';
+        }
+
+        /* 每条句子增加不同延时 */
+        .font p:nth-child(1) {
+            animation: fonts 8s linear both;
+        }
+
+        .font p:nth-child(2) {
+            animation: fonts 8s 1s linear both;
+
+        }
+
+        .font p:nth-child(3) {
+            animation: fonts 8s 2s linear both;
+        }
+
+        .font p:nth-child(4) {
+            animation: fonts 8s 3s linear both;
+        }
+
+        /* 文字渐进动画 */
+        @keyframes fonts {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <img src="images/star.jpg" alt="">
+    </div>
+
+    <div class="galact">
+        <!-- 太阳 -->
+        <div class="sun">
+
+        </div>
+        <!-- 轨道 -->
+        <ul class="rail">
+            <li>
+                <div class="box1"></div>
+                <div class="rail1"></div>
+            </li>
+            <li>
+                <div class="rail2"></div>
+                <div class="box2"></div>
+            </li>
+            <li>
+                <div class="rail3"></div>
+                <div class="box3"></div>
+
+            </li>
+            <li>
+                <div class="rail4"></div>
+                <div class="box4"></div>
+            </li>
+            <li>
+                <div class="rail5"></div>
+                <div class="box5"></div>
+
+            </li>
+        </ul>
+
+    </div>
+    <!-- 加一首诗 -->
+    <div class="font">
+        <p>寄蜉蝣于天地，渺沧海之一粟。</p>
+        <p>哀吾生之须臾，羡宇宙之无穷。</p>
+        <p>挟飞仙以遨游，抱明月而长终。</p>
+        <p>知不可乎骤得，托遗响于悲风。</p>
+    </div>
+
+</body>
+
+</html>
